@@ -1,0 +1,63 @@
+--THE TOTAL NUMBER OF CUSTOMERS
+SELECT COUNT(CustomerID) AS [Total_customers]
+FROM Mall_Customers_SQL
+
+--CUSTOMERS ABOVE THE AGE OF 30
+SELECT * FROM Mall_Customers_SQL
+WHERE Age >= 30
+ 
+--NUMBERS OF GENDERS IN THE DATA
+SELECT Gender, COUNT(*) AS [GENDERS]
+FROM Mall_Customers_SQL
+WHERE Age >= 30
+GROUP BY Gender
+
+ --ANNUAL INCOME PER GENDER
+SELECT Gender, AVG(Annual_Income_k) AS [ANNUAL INCOME PER GENDER]
+FROM Mall_Customers_SQL
+GROUP BY Gender
+
+
+SELECT Gender, AVG(Spending_Score_1_100) AS [ANNUAL INCOME PER GENDER]
+FROM Mall_Customers_SQL
+GROUP BY Gender
+
+--ANNUAL INCOME PER GENDER IN THE AGES 20 TO 30
+SELECT Gender, AVG(Spending_Score_1_100) AS [ANNUAL INCOME PER GENDER]
+FROM Mall_Customers_SQL
+WHERE Age >=20 AND Age <= 30
+GROUP BY Gender
+
+--AVERAGE INCOME
+SELECT AVG(Annual_income_k) as [AVERAGE INCOME]
+FROM Mall_Customers_SQL
+
+--CUSTOMER SPENDING SCORE IN DESCENDING ORDER
+SELECT CustomerID ,Age,Gender, Spending_Score_1_100
+FROM Mall_Customers_SQL
+ORDER BY Spending_Score_1_100 DESC
+
+--CUSTOMER ANNUAL INCOME IN DESCENDING ORDER
+SELECT CustomerID ,Age,Gender, Annual_Income_k
+FROM Mall_Customers_SQL
+ORDER BY Annual_Income_k DESC
+
+--CUSTOMERS WITH A MINIMAL SPENDING SCORE
+SELECT * 
+FROM Mall_Customers_SQL 
+WHERE Spending_Score_1_100 = (SELECT MIN(Spending_Score_1_100) FROM Mall_Customers_SQL);
+
+--CUSTOMERS WITH A MAXIMUM SPENDING SCORE
+SELECT * 
+FROM Mall_Customers_SQL 
+WHERE Spending_Score_1_100 = (SELECT MAX(Spending_Score_1_100) FROM Mall_Customers_SQL);
+
+--CUSTOMERS WITH A MINIMAL ANNUAL INCOME
+SELECT * 
+FROM Mall_Customers_SQL 
+WHERE Annual_Income_k = (SELECT MIN(Annual_Income_k) FROM Mall_Customers_SQL);
+
+--CUSTOMERS WITH A MAXIMUM ANNUAL INCOME
+SELECT * 
+FROM Mall_Customers_SQL 
+WHERE Annual_Income_k = (SELECT MAX(Annual_Income_k) FROM Mall_Customers_SQL);
